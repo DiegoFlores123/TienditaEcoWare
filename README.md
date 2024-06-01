@@ -1,3 +1,5 @@
+Antes de empezar el proyecto despues de instalarlo, borra los package.json y package-lock.json, si sigues las instrucciones, se reinstalaran con los archivos actualizados.
+
 Este proyecto es una simple tiendita que permite lo siguiente:
 
 Los clientes pueden hacer en nuestra interfaz registrarse en nuestro sistema, hacer login y navegar entre los diferentes productos para armar un carrito de compra y realizar la operación.
