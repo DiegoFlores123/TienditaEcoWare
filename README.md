@@ -6,7 +6,7 @@ Por su parte la API provee los recursos para que el cliente pueda:
 1. registrarse
 2. loguearse
 
-En todas las rutas siguientes, deberá enviar en el encabezado el token correspondiente
+En todas las rutas siguientes, deberá enviar en el encabezado el token correspondiente:
 
 3. buscar productos
 4. recuperar todos los productos
@@ -17,16 +17,18 @@ En la base de datos deberá existir un usuario administrador, el cual podrá hac
 1. registrarse
 2. loguearse
 
-En todas las rutas siguientes, deberá enviar en el encabezado el token correspondiente
+En todas las rutas siguientes, deberá enviar en el encabezado el token correspondiente:
 
 3. recuperar todos los clientes
 4. recuperar todos los productos
 5. modificar un producto (método PUT)
 6. agregar un producto nuevo
 
-Las librerias de NPM, comandos CURLS, Scripts de la DB con QUERY's para poder empezar a trabajar con el proyecto estan en sus .txts
+Las librerias de NPM, comandos CURLS, Scripts de la DB con QUERY's para poder empezar a trabajar con el proyecto estan en sus .txts.
 
-Se puede modificar el .env al gusto y a la necesidad del portador
+IMPORTANTE: AL USAR LOS COMANDOS CURL, SE PROPORCIONARA UN TOKEN QUE SE DEBE REEMPLAZAR POR LA PALABRA TOKEN EN LOS COMANDOS ESCRITOS.
+
+Se puede modificar el .env al gusto y a la necesidad del portador.
 
 Software usado para el desarrollo y uso:
 1. Visual Studio Code
