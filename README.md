@@ -7,6 +7,7 @@ Por su parte la API provee los recursos para que el cliente pueda:
 2. loguearse
 
 En todas las rutas siguientes, deberá enviar en el encabezado el token correspondiente
+
 3. buscar productos
 4. recuperar todos los productos
 5. recuperar sus pedidos
@@ -17,6 +18,7 @@ En la base de datos deberá existir un usuario administrador, el cual podrá hac
 2. loguearse
 
 En todas las rutas siguientes, deberá enviar en el encabezado el token correspondiente
+
 3. recuperar todos los clientes
 4. recuperar todos los productos
 5. modificar un producto (método PUT)
