@@ -1,1 +1,0 @@
-npm install express mysql mysql2 uuid bcryptjs jsonwebtoken cors dotenv body-parser

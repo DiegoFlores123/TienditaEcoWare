@@ -1,0 +1,10 @@
+// Comando para empezar el proyecto con un package.json
+npm init
+
+// Anclar esto al package.json
+"scripts": {
+    "start": "node -r dotenv/config index.js"
+},
+
+// Comandos de node_modules y sus librerias
+npm install express mysql mysql2 uuid bcryptjs jsonwebtoken cors dotenv body-parser
