@@ -24,8 +24,6 @@ En todas las rutas siguientes, deberá enviar en el encabezado el token correspo
 5. modificar un producto (método PUT)
 6. agregar un producto nuevo
 
-Para empezar el proyecto, se deben instalar los modulos de Node.js y tenerlo instalado (Usar el comando npm install).
-
 Las librerias de NPM, comandos CURLS, Scripts de la DB con QUERY's para poder empezar a trabajar con el proyecto estan en sus .txts.
 
 IMPORTANTE: AL USAR LOS COMANDOS CURL, SE PROPORCIONARA UN TOKEN QUE SE DEBE REEMPLAZAR POR LA PALABRA TOKEN EN LOS COMANDOS ESCRITOS.
