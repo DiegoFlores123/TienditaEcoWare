@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Registro de Tiendita</title>
+    <link rel="stylesheet" href="register.css">
+</head>
+<body>
+    <div class="background-decor"></div>
+    <div class="upper-decor"></div>
+
+    <div class="logo-container">
+        <img src="logo/EcoWare.png" alt="Logo de la empresa">
+    </div>
+
+    <div class="container">
+        <h1>Tiendita</h1>
+        <form id="registerForm">
+            <input type="email" id="registerEmail" placeholder="Enter your email" required>
+            <input type="password" id="registerPassword" placeholder="Enter your password" required>
+            <input type="text" id="registerNombre" placeholder="Enter your name">
+            <input type="text" id="registerDireccion" placeholder="Enter your address">
+            <button type="submit">Registrarse</button>
+        </form>
+        <br>
+        <br>
+        <p>¿Ya estas registrado?</p>
+        <button class="back" onclick="window.location.href='login.html'">Volver al Login</button>
+        <br>
+        <p id="reg1"></p>
+    </div>
+
+    <script src="js/auth.js"></script>
+</body>
+</html>

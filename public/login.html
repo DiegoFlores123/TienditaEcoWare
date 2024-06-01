@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Login de Tiendita</title>
+    <link rel="stylesheet" href="login.css">
+</head>
+<body>
+
+    <div class="background-decor"></div>
+    <div class="upper-decor"></div>
+
+    <div class="logo-container">
+        <img src="logo/EcoWare.png" alt="Logo de la empresa">
+    </div>
+
+    <div class="container">
+        <h1>Tiendita</h1>
+        <form id="loginForm">
+            <input type="email" id="loginEmail" placeholder="Enter your email" required>
+            <input type="password" id="loginPassword" placeholder="Enter your password" required>
+            <button type="submit">Logearse</button>
+        </form>
+        <br>
+        <br>
+        <p>¿No tienes una cuenta?</p>
+        <button class="register" onclick="window.location.href='register.html'">Ir a Registrarse</button>
+        <br>
+        <p id="reg"></p>
+    </div>
+
+    <script src="js/auth.js"></script>
+</body>
+</html>

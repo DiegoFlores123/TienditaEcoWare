@@ -1,0 +1,114 @@
+CREATE DATABASE ecommerce_profinal;
+
+USE ecommerce_profinal;
+
+CREATE TABLE usuarios (
+    id INT AUTO_INCREMENT PRIMARY KEY,
+    email VARCHAR(100) NOT NULL UNIQUE,
+    password VARCHAR(255) NOT NULL,
+    tipo INT NOT NULL,
+    CHECK (tipo IN (1, 2))
+);
+
+CREATE TABLE clientes (
+    id INT AUTO_INCREMENT PRIMARY KEY,
+    nombre VARCHAR(100) NOT NULL,
+    direccion VARCHAR(255),
+    usuarioId INT,
+    FOREIGN KEY (usuarioId) REFERENCES usuarios(id)
+);
+
+CREATE TABLE productos (
+    id INT AUTO_INCREMENT PRIMARY KEY,
+    nombre VARCHAR(100) NOT NULL,
+    cantidad INT NOT NULL,
+    precio DECIMAL(10, 2) NOT NULL,
+    CHECK (cantidad >= 0)
+);
+
+CREATE TABLE facturas (
+    id INT AUTO_INCREMENT PRIMARY KEY,
+    fecha DATETIME NOT NULL,
+    total DECIMAL(10, 2) NOT NULL,
+    clienteId INT NOT NULL,
+    FOREIGN KEY (clienteId) REFERENCES clientes(id)
+);
+
+CREATE TABLE productos_factura (
+    id INT AUTO_INCREMENT PRIMARY KEY,
+    cantidad INT NOT NULL,
+    precioVenta DECIMAL(10, 2) NOT NULL,
+    producto VARCHAR(100) NOT NULL,
+    facturaId INT NOT NULL,
+    clienteId INT NOT NULL,
+    FOREIGN KEY (facturaId) REFERENCES facturas(id),
+    FOREIGN KEY (clienteId) REFERENCES clientes(id)
+);
+
+DELIMITER //
+CREATE TRIGGER before_insert_productos_factura
+BEFORE INSERT ON productos_factura
+FOR EACH ROW
+BEGIN
+    DECLARE stock INT;
+
+    SELECT cantidad INTO stock FROM productos WHERE id = new.producto;
+
+    IF stock < new.cantidad THEN
+        SIGNAL SQLSTATE '45000' SET MESSAGE_TEXT = 'Not enough stock for the operation';
+    ELSE
+        SET new.precioVenta = new.precioVenta;
+        UPDATE productos SET cantidad = cantidad - new.cantidad WHERE id = new.producto;
+    END IF;
+END;
+
+//
+
+DELIMITER //
+
+CREATE PROCEDURE registrar_usuario (
+    IN p_email VARCHAR(100),
+    IN p_password VARCHAR(255),
+    IN p_tipo INT,
+    IN p_nombre VARCHAR(100),
+    IN p_direccion VARCHAR(255)
+)
+BEGIN
+    DECLARE last_id INT;
+    DECLARE email_count INT;
+
+    SELECT COUNT(*) INTO email_count FROM usuarios WHERE email = p_email;
+
+    IF email_count > 0 THEN
+        SIGNAL SQLSTATE '45000' SET MESSAGE_TEXT = 'El email ya existe';
+    ELSE
+        INSERT INTO usuarios (email, password, tipo) VALUES (p_email, p_password, p_tipo);
+
+        SET last_id = LAST_INSERT_ID();
+
+        IF p_tipo = 2 THEN
+            INSERT INTO clientes (nombre, direccion, usuarioId) VALUES (p_nombre, p_direccion, last_id);
+        END IF;
+    END IF;
+END;
+//
+
+
+/////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+
+// Querys de pruebas
+
+// Query de nuevo producto
+INSERT INTO productos (nombre, cantidad, precio) VALUES ('Lapiz', 10, 10.00);
+INSERT INTO productos (nombre, cantidad, precio) VALUES ('Borrador', 10, 5.00);
+INSERT INTO productos (nombre, cantidad, precio) VALUES ('Cartuchera', 10, 30.00);
+
+// Query para restock de un producto ya agregado
+UPDATE productos SET cantidad = cantidad + 10 WHERE id = '1';
+
+// Querys para reiniciar las tablas de clientes y usuarios:
+
+DELETE FROM clientes;
+ALTER TABLE clientes AUTO_INCREMENT = 1;
+DELETE FROM usuarios;
+ALTER TABLE usuarios AUTO_INCREMENT = 1;

@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Tiendita</title>
+    <link rel="stylesheet" href="products.css">
+</head>
+<body>
+    <header>
+        <div class="container">
+            <div class="logo-container">
+                <img src="logo/EcoWare.png" alt="Logo de la empresa">
+            </div>
+            <h1>Pagina principal de Tiendita</h1>
+            <br>
+            <nav>
+                <ul>
+                    <li><a href="login.html">Login</a></li>
+                    <li><a href="register.html">Sign Up</a></li>
+                    <li><a href="cart.html">Carrito</a></li>
+                    <li><a href="orders.html">Mis Facturas</a></li>
+                    <br>
+                    <div class="container">
+                        <input type="text" id="searchInput" placeholder="Buscar productos...">
+                        <button onclick="searchProducts()">Buscar</button>
+                    </div>
+                </ul>
+            </nav>
+        </div>
+    </header>
+
+    <main>
+        <div class="container">
+            <div class="product-list" id="productList">
+            </div>
+        </div>
+    </main>
+
+    <script src="js/products.js"></script>
+</body>
+</html>

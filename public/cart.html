@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Carrito de Compras</title>
+    <link rel="stylesheet" href="cart.css">
+</head>
+<body>
+    <header>
+        <div class="container">
+            <h1>Carrito de Compras</h1>
+            <nav>
+                <ul>
+                    <li><a href="products.html">Productos</a></li>
+                    <li><a href="orders.html">Mis Facturas</a></li>
+                    <li><a href="login.html">Login</a></li>
+                    <li><a href="register.html">Sign Up</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+
+    <main>
+        <div class="container">
+            <h2>Productos en tu Carrito</h2>
+            <div id="cartItems"></div>
+            <br>
+            <button class="checkout-button" onclick="checkout()">Checkout</button>
+        </div>
+    </main>
+
+    <div id="messageBox" class="message-box"></div>
+
+    <script src="js/cart.js"></script>
+</body>
+</html>

@@ -1,0 +1,17 @@
+SIGNUP
+curl -X POST http://localhost:3000/auth/register -H "Content-Type: application/json" -d "{\"nombre\": \"Admin User\", \"email\": \"admin@example.com\", \"password\": \"adminpassword\", \"tipo\": 1, \"direccion\": \"Admin Address\"}"
+
+LOGIN
+curl -X POST http://localhost:3000/auth/login -H "Content-Type: application/json" -d "{\"email\": \"admin@example.com\", \"password\": \"adminpassword\"}"
+
+RECUPERACION CLIENTES
+curl -X GET http://localhost:3000/admin/customers -H "Authorization: Bearer TOKEN"
+
+RECUPERACION PRODUCTOS
+curl -X GET http://localhost:3000/admin/products -H "Authorization: Bearer TOKEN"
+
+ACTUALIZAR PRODUCTOS
+curl -X PUT http://localhost:3000/admin/products/1 -H "Authorization: Bearer TOKEN" -H "Content-Type: application/json" -d "{\"nombre\": \"Borrador\", \"precio\": 19.99, \"cantidad\": 50}"
+
+AGREGAR PRODUCTOS
+curl -X POST http://localhost:3000/admin/products -H "Authorization: Bearer TOKEN" -H "Content-Type: application/json" -d "{\"nombre\": \"Cartulina\", \"precio\": 9.99, \"cantidad\": 100}"
