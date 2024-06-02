@@ -1,3 +1,5 @@
+Antes de empezar el proyecto despues de instalarlo, borra los package.json y package-lock.json, si sigues las instrucciones, se reinstalaran con los archivos actualizados.
+
 Este proyecto es una simple tiendita que permite lo siguiente:
 
 Usas npm i para empezar el proyecto.
