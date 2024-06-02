@@ -1,6 +1,6 @@
 const bcrypt = require('bcryptjs');
 const jwt = require('jsonwebtoken');
-const userModel = require('../models/userModel');
+const db = require('../database/db');
 require('dotenv').config();
 
 const SECRET_KEY = process.env.SECRET_KEY;
@@ -9,13 +9,13 @@ const register = (req, res) => {
     const { email, password, tipo, nombre, direccion } = req.body;
     const hashedPassword = bcrypt.hashSync(password, 8);
 
-    userModel.registerUser(email, hashedPassword, tipo, nombre, direccion, (err, results) => {
+    db.query('CALL registrar_usuario(?, ?, ?, ?, ?)', [email, hashedPassword, tipo, nombre, direccion], (err, results) => {
         if (err) {
             console.error('Error registering user:', err);
             return res.status(500).send('Error registering user.');
         }
         if (tipo === 1) {
-            userModel.registerAdminAsClient(email, (err) => {
+            db.query('INSERT INTO clientes (nombre) VALUES (?)', '', (err) => {
                 if (err) {
                     console.error('Error registering admin as client:', err);
                     return res.status(500).send('Error registering admin as client.');
@@ -31,7 +31,7 @@ const register = (req, res) => {
 const login = (req, res) => {
     const { email, password } = req.body;
 
-    userModel.findUserByEmail(email, (err, results) => {
+    db.query('SELECT * FROM usuarios WHERE email = ?', [email], (err, results) => {
         if (err) return res.status(500).send(err);
         if (results.length === 0) return res.status(404).send('User not found');
 

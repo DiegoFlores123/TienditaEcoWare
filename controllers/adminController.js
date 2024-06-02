@@ -1,14 +1,14 @@
-const adminModel = require('../models/adminModel');
+const db = require('../database/db');
 
 const getAllCustomers = (req, res) => {
-    adminModel.getAllCustomers((err, results) => {
+    db.query('SELECT * FROM clientes WHERE nombre != ""', (err, results) => {
         if (err) return res.status(500).send(err);
         res.json(results);
     });
 };
 
 const getAllProducts = (req, res) => {
-    adminModel.getAllProducts((err, results) => {
+    db.query('SELECT * FROM productos', (err, results) => {
         if (err) return res.status(500).send(err);
         res.json(results);
     });
@@ -18,7 +18,7 @@ const updateProduct = (req, res) => {
     const { id } = req.params;
     const { nombre, cantidad, precio } = req.body;
 
-    adminModel.updateProduct(id, nombre, cantidad, precio, (err, results) => {
+    db.query('UPDATE productos SET nombre = ?, cantidad = ?, precio = ? WHERE id = ?', [nombre, cantidad, precio, id], (err, results) => {
         if (err) return res.status(500).send(err);
         res.send('Product updated successfully!');
     });
@@ -27,7 +27,7 @@ const updateProduct = (req, res) => {
 const addProduct = (req, res) => {
     const { nombre, cantidad, precio } = req.body;
 
-    adminModel.addProduct(nombre, cantidad, precio, (err, results) => {
+    db.query('INSERT INTO productos (nombre, cantidad, precio) VALUES (?, ?, ?)', [nombre, cantidad, precio], (err, results) => {
         if (err) return res.status(500).send(err);
         res.send('Product added successfully!');
     });

@@ -1,7 +1,7 @@
-const productModel = require('../models/productModel');
+const db = require('../database/db');
 
 const getProducts = (req, res) => {
-    productModel.getAllProducts((err, results) => {
+    db.query('SELECT * FROM productos', (err, results) => {
         if (err) return res.status(500).send(err);
         res.json(results);
     });
@@ -9,7 +9,8 @@ const getProducts = (req, res) => {
 
 const searchProducts = (req, res) => {
     const productName = req.params.name;
-    productModel.searchProductsByName(productName, (err, results) => {
+    const query = 'SELECT * FROM productos WHERE nombre LIKE ?';
+    db.query(query, [`%${productName}%`], (err, results) => {
         if (err) return res.status(500).send(err);
         res.json(results);
     });

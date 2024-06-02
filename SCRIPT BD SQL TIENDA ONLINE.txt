@@ -12,7 +12,7 @@ CREATE TABLE usuarios (
 
 CREATE TABLE clientes (
     id INT AUTO_INCREMENT PRIMARY KEY,
-    nombre VARCHAR(100) NOT NULL,
+    nombre VARCHAR(100),
     direccion VARCHAR(255),
     usuarioId INT,
     FOREIGN KEY (usuarioId) REFERENCES usuarios(id)
@@ -93,22 +93,7 @@ BEGIN
 END;
 //
 
-
-/////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-
-// Querys de pruebas
-
-// Query de nuevo producto
 INSERT INTO productos (nombre, cantidad, precio) VALUES ('Lapiz', 10, 10.00);
 INSERT INTO productos (nombre, cantidad, precio) VALUES ('Borrador', 10, 5.00);
 INSERT INTO productos (nombre, cantidad, precio) VALUES ('Cartuchera', 10, 30.00);
-
-// Query para restock de un producto ya agregado
-UPDATE productos SET cantidad = cantidad + 10 WHERE id = '1';
-
-// Querys para reiniciar las tablas de clientes y usuarios y sus Id AUTO_INCREMENT:
-
-DELETE FROM clientes;
-ALTER TABLE clientes AUTO_INCREMENT = 1;
-DELETE FROM usuarios;
-ALTER TABLE usuarios AUTO_INCREMENT = 1;
+//
