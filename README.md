@@ -2,7 +2,7 @@ Antes de empezar el proyecto despues de instalarlo, borra los package.json y pac
 
 Este proyecto es una simple tiendita que permite lo siguiente:
 
-Usas npm i para empezar el proyecto.
+Usas el comando npm i para empezar el proyecto.
 
 Los clientes pueden hacer en nuestra interfaz registrarse en nuestro sistema, hacer login y navegar entre los diferentes productos para armar un carrito de compra y realizar la operación.
 
