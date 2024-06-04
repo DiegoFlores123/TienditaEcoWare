@@ -97,3 +97,5 @@ INSERT INTO productos (nombre, cantidad, precio) VALUES ('Lapiz', 10, 10.00);
 INSERT INTO productos (nombre, cantidad, precio) VALUES ('Borrador', 10, 5.00);
 INSERT INTO productos (nombre, cantidad, precio) VALUES ('Cartuchera', 10, 30.00);
 //
+
+CALL registrar_usuario('admin@example.com', '08010000', 1, NULL, NULL);
