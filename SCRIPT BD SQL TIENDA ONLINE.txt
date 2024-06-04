@@ -103,3 +103,6 @@ INSERT INTO productos (nombre, cantidad, precio) VALUES ('Cartuchera', 10, 30.00
 //
 
 CALL registrar_usuario('admin@example.com', '08010000', 1, NULL, NULL);
+
+// Como comentario, al registrar un admin directamente con un Query, no deja iniciar sesion porque se usa la libreria Bcrypt que hace un hash a la password y solo se acepta ese formato de password.
+// Si se inicia sesion, no permite el inicio de sesion, si se quiere agregar un admin que si funcione, debe ser con el CURL de Sign Up que esta en el txt de AdminCURLS.
