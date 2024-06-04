@@ -85,6 +85,10 @@ BEGIN
         INSERT INTO usuarios (email, password, tipo) VALUES (p_email, p_password, p_tipo);
 
         SET last_id = LAST_INSERT_ID();
+        
+        IF p_tipo = 1 THEN
+            INSERT INTO clientes (nombre) VALUES ("");
+        END IF;
 
         IF p_tipo = 2 THEN
             INSERT INTO clientes (nombre, direccion, usuarioId) VALUES (p_nombre, p_direccion, last_id);
